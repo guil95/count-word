@@ -10,30 +10,25 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f4f4;
     }
     h1 {
       margin-bottom: 30px;
       text-align: center;
       font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    button {
+    #counter {
       padding: 20px 40px;
       font-size: 1.5em;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-    button:hover {
+    #counter:hover {
       background-color: #ddd;
     }
     #cleanBtn {
@@ -44,15 +39,21 @@
       color: #fff;
       padding: 10px 20px;
       font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    #cleanBtn:hover {
+      background-color: #d43e2b;
     }
   </style>
 </head>
 <body>
   <h1 id="word"></h1>
-  <div class="button-container">
-    <button id="counter">Count</button>
-    <span id="countDisplay"></span>
-  </div>
+  <button id="counter">Count</button>
+  <span id="countDisplay"></span>
   <button id="cleanBtn">Clean Local Storage</button>
 
   <script>
