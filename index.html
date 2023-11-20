@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word Counter</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #counter {
+      margin-bottom: 20px;
+    }
+    #cleanBtn {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="word"></h1>
+  <button id="counter">Count</button>
+  <button id="cleanBtn">Clean Local Storage</button>
+
+  <script>
+    // Retrieving the word from the URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const word = urlParams.get('word');
+    document.getElementById('word').innerText = word;
+
+    // Counter functionality
+    let count = parseInt(localStorage.getItem(`${word}_count`)) || 0;
+    document.getElementById('counter').addEventListener('click', () => {
+      count++;
+      localStorage.setItem(`${word}_count`, count);
+      document.getElementById('counter').innerText = `Count: ${count}`;
+    });
+
+    // Clean local storage functionality
+    document.getElementById('cleanBtn').addEventListener('click', () => {
+      localStorage.removeItem(`${word}_count`);
+      count = 0;
+      document.getElementById('counter').innerText = `Count: ${count}`;
+    });
+
+    // Display count if exists in local storage
+    if (count > 0) {
+      document.getElementById('counter').innerText = `Count: ${count}`;
+    }
+  </script>
+</body>
+</html>
